@@ -1,0 +1,9 @@
+{
+  "name": "se-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "SE-API.js",
+  "keywords": [],
+  "author": "MattPlays",
+  "license": "MIT"
+}
