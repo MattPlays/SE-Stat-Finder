@@ -5,9 +5,6 @@
   "keywords": [],
   "author": "MattPlays",
   "license": "MIT",
-  "publishConfig": {
-    "registry":"https://npm.pkg.github.com"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MattPlays/SE-Stat-Finder.git"
