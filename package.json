@@ -1,9 +1,17 @@
 {
-  "name": "se-api",
+  "name": "@mattplays/se-api",
   "version": "1.0.0",
-  "description": "",
   "main": "SE-API.js",
   "keywords": [],
   "author": "MattPlays",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MattPlays/SE-Stat-Finder.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MattPlays/SE-Stat-Finder/issues"
+  },
+  "homepage": "https://github.com/MattPlays/SE-Stat-Finder#readme",
+  "description": ""
 }
