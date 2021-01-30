@@ -7,7 +7,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MattPlays/SE-Stat-Finder.git"
+    "url": "git://github.com/MattPlays/SE-Stat-Finder.git"
   },
   "bugs": {
     "url": "https://github.com/MattPlays/SE-Stat-Finder/issues"
