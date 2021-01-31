@@ -158,7 +158,7 @@ class API {
                     }
                     //Player Medals
                     for (let i = 0; i < md.length; i++) {
-                        const medal = new Medal(md.shift||"N/A", md.shift||"N/A");
+                        const medal = new Medal(md.shift()||"N/A", md.shift()||"N/A");
                         medals.push(medal)
                     }
                     //Player Rankings
