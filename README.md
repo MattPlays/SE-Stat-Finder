@@ -37,7 +37,7 @@ let api = new API();
 `findPlayerStatsByID()`
 | Input | Output |
 | ----- |:------:|
-| `String|Number`| `Array<Player, Array<Match>, Array<Weapon>, Array<Medal>, Array<Rank>>` |
+|`String`| `Array<Player, Array<Match>, Array<Weapon>, Array<Medal>, Array<Rank>>` |
 
 
 This function will Error if the ID is invalid.
