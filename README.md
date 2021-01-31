@@ -35,22 +35,28 @@ let api = new API();
 #### Functions
 
 `findPlayerStatsByID()`
-
-Currently, this function takes in a `String|Number` and returns `Array<Player, Array<Match>, Array<Weapon>, Array<Medal>, Array<Rank>>` or Errors if the ID does not exist.
+| Input | Output |
+| ----- |:------:|
+| `String|Number`| `Array<Player, Array<Match>, Array<Weapon>, Array<Medal>, Array<Rank>>` |
+This function will Error if the ID is invalid.
 ```js
 let [Player, Matches, Weapons, Medals, Ranks] = await api.findPlayerStatsByID(2535);
 ```
 
 `findPlayerStatsByName()`
-
-Currently, like `findPlayerStatsByID()` this function takes in a `String` and returns `Array<Player, Array<Match>, Array<Weapon>, Array<Medal>, Array<Rank>>` or Errors if the Name does not exist.
+| Input | Output |
+| ----- |:------:|
+| `String` | `Array<Player, Array<Match>, Array<Weapon>, Array<Medal>, Array<Rank>>`|
+This function will error, if the name cannot be found.
 ```js
 let [Player, Matches, Weapons, Medals, Ranks] = await api.findPlayerStatsByName("Vercidium"); //Vercidium is one of the Developers of Sector's Edge.
 ```
 
 `findMatchStatsByID()`
-
-Currently, this function takes in a `String` and returns `Array<Array<Match_Player>, Array<Match_Medal>>` or Errors if a Match with that ID does not exist.
+| Input | Output |
+| ----- |:------:|
+| `String` | `Array<Array<Match_Player>, Array<Match_Medal>>`|
+This function will Error, if the Match ID is invalid.
 ```js
 let [Players, Medals] = await api.findMatchStatsByID("5ffe136938767110e79c0281");
 ```

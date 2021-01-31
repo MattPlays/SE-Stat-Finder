@@ -1,5 +1,25 @@
 const [getAsync] = [require('request').get, require('request').post].map(require('util').promisify);
 class Player {
+    /**
+     * 
+     * @param {String} name 
+     * @param {String} protons 
+     * @param {String} level 
+     * @param {String} kills 
+     * @param {String} deaths 
+     * @param {String} assists 
+     * @param {String} headshots 
+     * @param {String} knife_kills 
+     * @param {String} longest_killstreak 
+     * @param {String} teams 
+     * @param {String} kdr 
+     * @param {String} kpm 
+     * @param {String} headshot_kill_percentage 
+     * @param {String} playtime 
+     * @param {String} attacking_time 
+     * @param {String} defending_time 
+     * @param {Number} playerID 
+     */
     constructor(name, protons, level, kills, deaths, assists, headshots,knife_kills,longest_killstreak, teams, kdr, kpm, headshot_kill_percentage, playtime, attacking_time, defending_time, playerID)
     {
         this.name = name;
@@ -21,7 +41,25 @@ class Player {
         this.playerID = playerID;
     }
 }
+
 class Match_Player {
+    /**
+     * 
+     * @param {String} name 
+     * @param {String} team 
+     * @param {String} protons 
+     * @param {String} xp 
+     * @param {String} points 
+     * @param {String} kills 
+     * @param {String} deaths 
+     * @param {String} assists 
+     * @param {String} kdr 
+     * @param {String} kill_streak 
+     * @param {String} headshots 
+     * @param {String} melee_kills 
+     * @param {String} blocks_placed 
+     * @param {String} blocks_destroyed 
+     */
     constructor(name, team, protons, xp, points, kills, deaths, assists, kdr, kill_streak, headshots, melee_kills, blocks_placed, blocks_destroyed) {
         this.name = name;
         this.team = team;
@@ -40,6 +78,26 @@ class Match_Player {
     }
 }
 class Match {
+    /**
+     * 
+     * @param {String} date 
+     * @param {String} map 
+     * @param {String} mode 
+     * @param {String} team 
+     * @param {String} protons 
+     * @param {String} xp 
+     * @param {String} points 
+     * @param {String} kills 
+     * @param {String} deaths 
+     * @param {String} assists 
+     * @param {String} kdr 
+     * @param {String} longest_killstreak 
+     * @param {String} headshots 
+     * @param {String} melee 
+     * @param {String} blocks_placed 
+     * @param {String} blocks_destroyed 
+     * @param {String} matchID 
+     */
     constructor(date, map, mode, team, protons, xp, points, kills, deaths, assists, kdr, longest_killstreak, headshots, melee, blocks_placed, blocks_destroyed, matchID){
         this.date = date;
         this.map = map;
@@ -61,6 +119,17 @@ class Match {
     }
 }
 class Weapon  {
+    /**
+     * 
+     * @param {String} name 
+     * @param {String} total_kills 
+     * @param {String} times_fired 
+     * @param {String} accuracy 
+     * @param {String} headshot_hit_percentage 
+     * @param {String} total_player_damage 
+     * @param {String} ttk 
+     * @param {String} dps 
+     */
     constructor(name, total_kills, times_fired, accuracy, headshot_hit_percentage, total_player_damage, ttk, dps) {
         this.name = name;
         this.total_kills = total_kills;
@@ -73,12 +142,23 @@ class Weapon  {
     }
 }
 class Medal {
+    /**
+     * 
+     * @param {String} medal 
+     * @param {String} count 
+     */
     constructor(medal, count) {
         this.medal = medal;
         this.count = count;
     }
 }
 class Match_Medal {
+    /**
+     * 
+     * @param {String} medal 
+     * @param {String} rank 
+     * @param {String} player 
+     */
     constructor(medal, rank, player) {
         this.medal = medal;
         this.rank = rank;
@@ -86,6 +166,12 @@ class Match_Medal {
     }
 }
 class Rank {
+    /**
+     * 
+     * @param {String} gamemode 
+     * @param {String} average_rank 
+     * @param {String} average_score 
+     */
     constructor(gamemode, average_rank, average_score) {
         this.gamemode = gamemode;
         this.average_rank = average_rank;
@@ -98,7 +184,7 @@ class API {
     };
     /**
      * @param {(String|Number)} ID 
-     * @returns {Array}
+     * @returns {Array<Player, Array<Match>, Array<Weapon>, Array<Medal>, Array<Rank>>}
      */
     async findPlayerStatsByID(ID) {
         let promise = new Promise((res, rej) => {
@@ -174,7 +260,7 @@ class API {
     }
     /**
      * @param {String} name 
-     * @returns {Array}
+     * @returns {Array<Player, Array<Match>, Array<Weapon>, Array<Medal>, Array<Rank>>}
      */
     async findPlayerStatsByName(name) {
         let promise = new Promise((res, rej) => {
@@ -198,7 +284,7 @@ class API {
     }
     /**
      * @param {String} ID 
-     * @returns {Array}
+     * @returns {Array<Array<Match_Player>, Array<Match_Medal>>}
      */
     async findMatchStatsByID(ID) {
         let promise = new Promise((res, rej) => {
