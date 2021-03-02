@@ -66,7 +66,28 @@ This function will Error, if the Match ID is invalid.
 ```js
 let [Players, Medals] = await api.findMatchStatsByID("5ffe136938767110e79c0281");
 ```
+`findServers()`
+| Input | Type |
+| ----- | :----: |
+| empty | `Boolean`|
+| full | `Boolean` |
+| regions | `Array<String>`|
+| gamemodes | `Array<String>`|
 
+Function will return a `Array<Server>`(An Arry of Servers).
+
+```js
+let Servers = await api.findServers(false, true, [
+        "uswest",
+        "uscentral",
+        "useast"
+    ], [
+        "Breakthrough",
+        "Salvage",
+        "Spire",
+        "Static"
+    ])
+```
 ## License
 
 Licensed under the [MIT license](LICENSE).

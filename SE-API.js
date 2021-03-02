@@ -178,6 +178,39 @@ class Rank {
         this.average_score = average_score;
     }
 }
+class Server {
+    /**
+     * 
+     * @param {String} name 
+     * @param {String} identifier 
+     * @param {String} region 
+     * @param {String} version 
+     * @param {String} address 
+     * @param {Number} portOffset 
+     * @param {String} map 
+     * @param {String} gameMode 
+     * @param {Number} players 
+     * @param {Number} maxPlayers 
+     * @param {Number} timeRemaining 
+     * @param {Number} lastUpdate 
+     * @param {Boolean} tournament 
+     */
+    constructor(name,identifier,region,version,address,portOffset,map,gameMode,players,maxPlayers,timeRemaining,lastUpdate,tournament) {
+        this.name = name;
+        this.identifier = identifier;
+        this.region = region;
+        this.version = version;
+        this.address = address;
+        this.portOffset = portOffset;
+        this.map = map;
+        this.gameMode = gameMode;
+        this.players = players;
+        this.maxPlayers = maxPlayers;
+        this.timeRemaining = timeRemaining;
+        this.lastUpdate = lastUpdate;
+        this.tournament = tournament;
+    }
+}
 class API {
     constructor() {
 
@@ -334,6 +367,55 @@ class API {
                 })
         })
         let result = await promise
+        return result
+    }
+    /**
+     * 
+     * @param {Boolean} empty 
+     * @param {Boolean} full 
+     * @param {Array<String>} regions 
+     * @param {Array<String>} gamemodes 
+     * @returns {Server}
+     */
+    async findServers(empty, full, regions, gamemodes) {
+        const promise = new Promise((resolve, reject) => {
+            const data = JSON.stringify({
+                "empty": empty,
+                "full": empty,
+                "regions": regions,
+                "gamemodes": gamemodes,
+                // "key": "False-True-uswestuscentraluseastBreakthroughSalvageSpireStatic"
+                "key": `${empty}-${full}-${regions.join("")}${gamemodes.join("")}`
+    
+            })
+    
+            const options = {
+                hostname: 'us-match-c.sectorsedge.com',
+                port: 443,
+                path: '/serverQuery',
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Content-Length': data.length
+                }
+            }
+            const req = https.request(options, res => {
+                let reply = '';
+                res.on('data', d => {
+                    reply += d;
+                })
+                res.on("end", () => {
+                    resolve(reply);
+                })
+            })
+    
+            req.on('error', error => {
+                reject(error);
+            })
+            req.write(data)
+            req.end()
+        })
+        let result = await promise;
         return result
     }
 }
