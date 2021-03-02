@@ -417,7 +417,16 @@ class API {
             req.end()
         })
         let result = await promise;
-        return result
+        result = JSON.parse(result);
+        result = JSON.parse(result.result);
+        let servers = new Array();
+        for(let i = 0; i > result.listings.length; i ++) {
+
+            let server = new Server(result.listings[i].name,result.listings[i].identifier,result.listings[i].region, result.listings[i].version, result.listings[i].address, result.listings[i].portOffset, result.listings[i].map, result.listings[i].gameMode, result.listings[i].players, result.listings[i].maxPlayers, result.listings[i].timeRemaining, result.listings[i].lastUpdate, result.listings[i].tournament)
+            servers.push(server);
+
+        }
+        return servers;
     }
 }
 module.exports = {
