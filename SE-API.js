@@ -1,4 +1,5 @@
 const [getAsync] = [require('request').get, require('request').post].map(require('util').promisify);
+const https = require("https");
 class Player {
     /**
      * 
